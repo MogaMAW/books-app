@@ -35,7 +35,7 @@ public class AuthorController {
     @GetMapping(path="/get/{authorId}")
     public ResponseEntity<Author> getAuthor(
             @PathVariable("authorId") Long authorId
-        ){
+    ){
         Author author= authorService.getAuthor(authorId);
         return new ResponseEntity<>(author, HttpStatus.OK);
     }
