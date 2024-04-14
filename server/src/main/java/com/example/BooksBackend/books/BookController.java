@@ -68,6 +68,15 @@ public class BookController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
+    @GetMapping(path="/search")
+    public ResponseEntity<List<Book>> searchBooks(
+            @RequestParam("searchTerm") String searchTerm
+    ){
+        List<Book> books = bookService.searchBooks(searchTerm);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+
     @DeleteMapping(path="/delete/{bookId}")
     public ResponseEntity<GeneralBookResponse> deleteBook(
             @PathVariable("bookId") Long bookId
