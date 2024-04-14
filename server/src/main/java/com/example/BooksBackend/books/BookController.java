@@ -52,10 +52,14 @@ public class BookController {
     }
 
     @GetMapping(path="/get-all")
-    public ResponseEntity<List<Book>> getAllBooks(){
-        List<Book> books= bookService.getAllBooks();
+    public ResponseEntity<List<Book>> getAllBooks(
+            @RequestParam(defaultValue = "0") int offset,
+            @RequestParam(defaultValue = "10") int limit
+    ){
+        List<Book> books = bookService.getAllBooks(offset, limit);
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
+
 
     @DeleteMapping(path="/delete/{bookId}")
     public ResponseEntity<GeneralBookResponse> deleteBook(
