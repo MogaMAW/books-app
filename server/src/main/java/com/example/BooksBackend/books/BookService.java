@@ -92,6 +92,10 @@ public class BookService {
         return bookRepository.findAll(pageable).getContent();
     }
 
+    public List<Book> getBooksByAuthorId(Long authorId) {
+        return bookRepository.findByAuthorId(authorId);
+    }
+
     public void deleteBook(Long bookId) {
         Optional<Book> optionalBook = bookRepository.findById(bookId);
         if (optionalBook.isPresent()) {
