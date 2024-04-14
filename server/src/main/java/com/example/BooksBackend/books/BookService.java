@@ -1,15 +1,14 @@
 package com.example.BooksBackend.books;
 
-import com.example.BooksBackend.authors.Author;
 import com.example.BooksBackend.exception.BadRequestException;
 import com.example.BooksBackend.exception.ResourceNotFoundException;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -86,8 +85,11 @@ public class BookService {
     }
 
 
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+
+    public List<Book> getAllBooks(int offset, int limit) {
+        Pageable pageable = PageRequest.of(offset, limit, Sort.by("id").ascending());
+
+        return bookRepository.findAll(pageable).getContent();
     }
 
     public void deleteBook(Long bookId) {
