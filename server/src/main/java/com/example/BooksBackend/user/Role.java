@@ -15,18 +15,29 @@ public enum Role {
   USER(Collections.emptySet()),
   ADMIN(
           Set.of(
-                  Permission.ADMIN_READ,
-                  Permission.ADMIN_UPDATE,
-                  Permission.ADMIN_DELETE,
-                  Permission.ADMIN_CREATE
+                  com.example.BooksBackend.user.Permission.ADMIN_READ,
+                  com.example.BooksBackend.user.Permission.ADMIN_UPDATE,
+                  com.example.BooksBackend.user.Permission.ADMIN_DELETE,
+                  com.example.BooksBackend.user.Permission.ADMIN_CREATE,
+                  com.example.BooksBackend.user.Permission.MANAGER_READ,
+                  com.example.BooksBackend.user.Permission.MANAGER_UPDATE,
+                  com.example.BooksBackend.user.Permission.MANAGER_DELETE,
+                  com.example.BooksBackend.user.Permission.MANAGER_CREATE
           )
   ),
-
+  MANAGER(
+          Set.of(
+                  com.example.BooksBackend.user.Permission.MANAGER_READ,
+                  com.example.BooksBackend.user.Permission.MANAGER_UPDATE,
+                  com.example.BooksBackend.user.Permission.MANAGER_DELETE,
+                  com.example.BooksBackend.user.Permission.MANAGER_CREATE
+          )
+  )
 
   ;
 
   @Getter
-  private final Set<Permission> permissions;
+  private final Set<com.example.BooksBackend.user.Permission> permissions;
 
   public List<SimpleGrantedAuthority> getAuthorities() {
     var authorities = getPermissions()

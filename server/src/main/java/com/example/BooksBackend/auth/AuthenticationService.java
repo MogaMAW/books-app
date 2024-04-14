@@ -42,7 +42,7 @@ public class AuthenticationService {
     response.setAccessToken(jwtToken);
     response.setUser(savedUser.getId());
     response.setEmail(savedUser.getEmail());
-    response.setUsername(savedUser.getUsername());
+    response.setUsername(savedUser.getName());
     return response;
 
   }
@@ -64,7 +64,7 @@ public class AuthenticationService {
     response.setAccessToken(jwtToken);
     response.setUser(user.getId());
     response.setEmail(user.getEmail());
-    response.setUsername(user.getUsername());
+    response.setUsername(user.getName());
     return response;
   }
 
