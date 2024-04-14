@@ -60,6 +60,13 @@ public class BookController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
+    @GetMapping(path="/get-by-author/{authorId}")
+    public ResponseEntity<List<Book>> getBooksByAuthorId(
+            @PathVariable("authorId") Long authorId
+    ){
+        List<Book> books = bookService.getBooksByAuthorId(authorId);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
 
     @DeleteMapping(path="/delete/{bookId}")
     public ResponseEntity<GeneralBookResponse> deleteBook(
