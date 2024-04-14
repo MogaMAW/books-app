@@ -3,6 +3,7 @@ package com.example.BooksBackend.books;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/books")
+@PreAuthorize("hasRole('ADMIN')")
 public class BookController {
     final private BookService bookService;
     @PostMapping("/create")
