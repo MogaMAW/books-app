@@ -96,6 +96,11 @@ public class BookService {
         return bookRepository.findByAuthorId(authorId);
     }
 
+
+    public List<Book> searchBooks(String searchTerm) {
+        return bookRepository.findByTitleOrGenre(searchTerm.toLowerCase());
+    }
+
     public void deleteBook(Long bookId) {
         Optional<Book> optionalBook = bookRepository.findById(bookId);
         if (optionalBook.isPresent()) {
