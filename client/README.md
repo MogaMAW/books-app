@@ -1,1 +1,1 @@
-# Character-ai clone client
+# Client implementation of Moga's Book Store
