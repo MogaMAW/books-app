@@ -12,6 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import static com.example.BooksBackend.user.Permission.ADMIN_CREATE;
 import static com.example.BooksBackend.user.Permission.ADMIN_DELETE;
@@ -41,6 +44,7 @@ public class SecurityConfiguration {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
+            .cors().and() // Enable CORS
             .csrf()
             .disable()
             .authorizeHttpRequests()
@@ -81,5 +85,17 @@ public class SecurityConfiguration {
     ;
 
     return http.build();
+  }
+
+  // CORS Configuration
+  @Bean
+  public CorsFilter corsFilter() {
+    CorsConfiguration corsConfiguration = new CorsConfiguration();
+    corsConfiguration.addAllowedOrigin("*"); // Allow all origins
+    corsConfiguration.addAllowedHeader("*"); // Allow all headers
+    corsConfiguration.addAllowedMethod("*"); // Allow all methods
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", corsConfiguration);
+    return new CorsFilter(source);
   }
 }

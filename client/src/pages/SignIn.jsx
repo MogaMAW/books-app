@@ -20,13 +20,15 @@ export const SignIn = () => {
     mutationFn: signIn,
     onSuccess: (auth) => {
       dispatch(
-        showCardNotification({ type: "success", message: auth.message })
+        authenticate({
+          accessToken: auth.access_token,
+          user: {
+            userId: auth.user_id,
+            email: auth.email,
+            username: auth.username,
+          },
+        })
       );
-      setTimeout(() => {
-        dispatch(hideCardNotification());
-      }, 10000);
-
-      dispatch(authenticate(auth));
     },
     onError: (error) => {
       dispatch(

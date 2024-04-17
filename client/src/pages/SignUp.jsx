@@ -19,7 +19,16 @@ export const SignUp = () => {
   const { isLoading, mutate } = useMutation({
     mutationFn: signUp,
     onSuccess: (auth) => {
-      dispatch(authenticate(auth));
+      dispatch(
+        authenticate({
+          accessToken: auth.access_token,
+          user: {
+            userId: auth.user_id,
+            email: auth.email,
+            username: auth.username,
+          },
+        })
+      );
       dispatch(
         showCardNotification({
           type: "success",
