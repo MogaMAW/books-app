@@ -4,7 +4,6 @@ import { Button, Typography } from "@material-tailwind/react";
 import { closeSidebarHandler } from "../../store/actions/sidebar";
 import { useSelector, useDispatch } from "react-redux";
 import { IconContext } from "react-icons";
-import { RiCompassDiscoverFill } from "react-icons/ri";
 import { HiMiniChevronDoubleLeft } from "react-icons/hi2";
 import { IoIosHome } from "react-icons/io";
 import { extractFirstLetter } from "../../utils/extractFirstLetter";
