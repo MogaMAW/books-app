@@ -5,9 +5,9 @@ export const Home = () => {
   return (
     <Fragment>
       <div className="w-full space-y-8">
-        <div className="">
+        {/* <div className="">
           <Header />
-        </div>
+        </div> */}
         <div>{/* More elements */}</div>
       </div>
     </Fragment>

@@ -60,13 +60,13 @@ export const Header = () => {
             </ul>
           )}
           {isLoggedIn && (
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center gap-4">
               <span
                 className="cursor-pointer grid place-items-center  bg-gray-300s p-1
-                 w-10 h-10 rounded-[50%] text-gray-50 first-letter:uppercase text-xl
+                 w-8 h-8 rounded-[50%] text-gray-50 first-letter:uppercase text-xl
                  bg-gradient-to-r from-indigo-500 via-blue-700 to-cyan-900"
               >
-                {extractFirstLetter("username")}
+                {extractFirstLetter(user.username)}
               </span>
               <p className="flex items-center justify-center">
                 {user.username}

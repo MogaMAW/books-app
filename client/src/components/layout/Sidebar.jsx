@@ -6,12 +6,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { IconContext } from "react-icons";
 import { RiCompassDiscoverFill } from "react-icons/ri";
 import { HiMiniChevronDoubleLeft } from "react-icons/hi2";
-import { AiOutlinePlus } from "react-icons/ai";
+import { IoIosHome } from "react-icons/io";
 import { extractFirstLetter } from "../../utils/extractFirstLetter";
 import { GoChevronDown } from "react-icons/go";
 
 export const Sidebar = () => {
   const isOpenSidebar = useSelector((state) => state.sidebar.isOpen);
+  const user = useSelector((state) => state.auth.user);
 
   const dispatch = useDispatch();
 
@@ -21,11 +22,11 @@ export const Sidebar = () => {
 
   const pages = [
     {
-      name: "Discover",
+      name: "Home",
       icon: (
         <span className="inline-block cursor-pointer">
           <IconContext.Provider value={{ size: "1.6rem", color: "#f8f9fa" }}>
-            <RiCompassDiscoverFill />
+            <IoIosHome />
           </IconContext.Provider>
         </span>
       ),
@@ -64,36 +65,6 @@ export const Sidebar = () => {
       </div>
       <div className="m-4 mt-1">
         <ul className="mb-4 flex flex-col gap-3">
-          <li>
-            <NavLink to="/character/new">
-              {({ isActive }) => (
-                <Button
-                  className={`flex items-center gap-2 bg-inherit px-4 
-                  capitalize bg-gray-800 text-gray-50 shadow-none hover:bg-gray-800
-                  focus:bg-gray-800 relative outline-none rounded-3xl w-32 border-[1px]
-                   border-gray-700
-                  ${isActive && `bg-gray-800`}`}
-                  fullWidth
-                  placeholder={""}
-                >
-                  <span className="cursor-pointer">
-                    <IconContext.Provider
-                      value={{ size: "1.6rem", color: "#e9ecef" }}
-                    >
-                      <AiOutlinePlus />
-                    </IconContext.Provider>
-                  </span>
-                  <Typography
-                    color="inherit"
-                    className={`font-medium capitalize`}
-                    placeholder={""}
-                  >
-                    Create
-                  </Typography>
-                </Button>
-              )}
-            </NavLink>
-          </li>
           {pages.map(({ icon, name, path }) => (
             <li key={name}>
               <NavLink to={`/${path}`}>
@@ -123,21 +94,22 @@ export const Sidebar = () => {
         <div
           className="flex items-center justify-start gap-3
            rounded-md p-2 text-white  hover:bg-gray-800
-           focus:bg-gray-800 absolute left-4 bottom-4 w-[88%]"
+           focus:bg-gray-800 absolute left-4 bottom-4 w-[88%]
+           cursor-pointer"
         >
           <span
             className="cursor-pointer grid place-items-center  bg-gray-300s p-1
             w-10 h-10 rounded-[50%] text-gray-50 first-letter:uppercase text-xl
-            bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+            bg-gradient-to-r from-indigo-500 via-blue-700 to-cyan-900"
           >
-            {extractFirstLetter("username")}
+            {extractFirstLetter(user.username)}
           </span>
           <p className="flex-1 flex  justify-between">
             <span
               className="cursor-pointer flex items-center gap-1
               text-gray-50 text-sm"
             >
-              {"username"}
+              {user.username}
             </span>
             <span className="cursor-pointer">
               <IconContext.Provider
