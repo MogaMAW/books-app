@@ -7,6 +7,7 @@ import { AppLayout } from "./components/layout/AppLayout";
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
 import { Notification } from "./components/UI/Notification";
+import { authenticate } from "./store/actions/auth";
 
 export const App = () => {
   const auth = useSelector((state) => state.auth);
@@ -18,6 +19,28 @@ export const App = () => {
   const closeCardHandler = () => {
     dispatch(notificationActions.hideCardNotification());
   };
+
+  useEffect(() => {
+    const tryLogin = async () => {
+      const strAuthData = localStorage.getItem("auth");
+      const parsedAuthData = strAuthData && JSON.parse(strAuthData);
+
+      if (!parsedAuthData) {
+        localStorage.clear();
+        return <Navigate to="/" />;
+      }
+
+      const { user, accessToken } = parsedAuthData;
+
+      if (!user || !accessToken) {
+        localStorage.clear();
+        return <Navigate to="/" />;
+      }
+
+      dispatch(authenticate(parsedAuthData));
+    };
+    tryLogin();
+  }, [dispatch]);
 
   useEffect(() => {
     setTimeout(() => {
