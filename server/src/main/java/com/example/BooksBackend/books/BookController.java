@@ -11,9 +11,9 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/books")
-@PreAuthorize("hasRole('ADMIN')")
 public class BookController {
     final private BookService bookService;
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<Book> createBook(
             @RequestBody CreateBookRequest request
@@ -28,6 +28,7 @@ public class BookController {
         return new ResponseEntity<>(newBook, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(path="/update/{bookId}")
     public ResponseEntity<Book> updateBook(
             @PathVariable("bookId") Long bookId,
@@ -42,7 +43,7 @@ public class BookController {
                 request.getGenre());
         return new ResponseEntity<>(updatedBook, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(path="/get/{bookId}")
     public ResponseEntity<Book> getBook(
             @PathVariable("bookId") Long bookId
@@ -51,6 +52,8 @@ public class BookController {
         return new ResponseEntity<>(book, HttpStatus.OK);
     }
 
+
+    @PreAuthorize("permitAll()")
     @GetMapping(path="/get-all")
     public ResponseEntity<List<Book>> getAllBooks(
             @RequestParam(defaultValue = "0") int offset,
@@ -60,6 +63,7 @@ public class BookController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(path="/get-by-author/{authorId}")
     public ResponseEntity<List<Book>> getBooksByAuthorId(
             @PathVariable("authorId") Long authorId
@@ -68,6 +72,7 @@ public class BookController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(path="/search")
     public ResponseEntity<List<Book>> searchBooks(
             @RequestParam("searchTerm") String searchTerm
@@ -77,6 +82,7 @@ public class BookController {
     }
 
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(path="/delete/{bookId}")
     public ResponseEntity<GeneralBookResponse> deleteBook(
             @PathVariable("bookId") Long bookId

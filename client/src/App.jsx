@@ -8,6 +8,7 @@ import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
 import { Notification } from "./components/UI/Notification";
 import { authenticate } from "./store/actions/auth";
+import { Header } from "./components/layout/Header";
 
 export const App = () => {
   const auth = useSelector((state) => state.auth);
@@ -50,7 +51,7 @@ export const App = () => {
 
   return (
     <Fragment>
-      <div className="text-base overflow-x-hidden bg-gray-800 min-h-[100vh]">
+      <div className="text-base overflow-x-hidden bg-gray-900 min-h-[100vh]">
         <BrowserRouter>
           {!isLoggedIn && (
             <Fragment>
@@ -62,7 +63,15 @@ export const App = () => {
                 />
               )}
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route
+                  path="/"
+                  element={
+                    <div className="px-4 sm:px-12">
+                      <Header />
+                      <Home />
+                    </div>
+                  }
+                />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/home" element={<Navigate to="/" replace />} />
@@ -80,6 +89,13 @@ export const App = () => {
           )}
           {isLoggedIn && (
             <Fragment>
+              {notification.showCardNotification && (
+                <Notification
+                  type={notification.cardNotificationType}
+                  message={notification.cardMessage}
+                  onClose={closeCardHandler}
+                />
+              )}
               <Routes>
                 <Route
                   path="/"
