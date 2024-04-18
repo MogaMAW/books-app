@@ -7,6 +7,7 @@ import {
 } from "../store/actions/notification";
 import { getBooksByUser as getAllBooks } from "../API/books";
 import { BookCard } from "../components/UI/BookCard";
+import { SearchBooks } from "../components/UI/SearchBooks";
 
 export const BooksList = () => {
   const [books, setBooks] = useState([]);
@@ -56,13 +57,23 @@ export const BooksList = () => {
 
   console.log("books:::", books);
 
+  const onSearchSuccessFullHandler = (books) => {
+    setBooks(() => books);
+  };
+
   return (
     <Fragment>
-      <div className="py-14 w-full flex flex-col items-center justify-center">
-        {isLoading && <div>Loading books...</div>}
+      <div
+        className="py-14 w-full flex flex-col items-center justify-center
+         gap-16"
+      >
+        <div className="w-full">
+          <SearchBooks onSuccess={onSearchSuccessFullHandler} />
+        </div>
+        {isLoading && <div className="">Loading books...</div>}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4
-          sxl:grid-cols-5 gap-2"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
+          xl:grid-cols-4 sxl:grid-cols-5 gap-2 gap-y-4"
         >
           {books?.map((book, index) => (
             <div className="" key={index}>

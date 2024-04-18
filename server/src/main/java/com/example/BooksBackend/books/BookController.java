@@ -72,7 +72,7 @@ public class BookController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("permitAll()")
     @GetMapping(path="/search")
     public ResponseEntity<List<Book>> searchBooks(
             @RequestParam("searchTerm") String searchTerm
