@@ -10,7 +10,7 @@ export const AppLayout = (props) => {
          w-full relative"
       >
         <Sidebar />
-        <div className={`p-4 sm:px-12 pt-8 xl:ml-72 relative`}>
+        <div className={`px-4 sm:px-12 xl:ml-72 relative`}>
           <div>
             <Header />
           </div>

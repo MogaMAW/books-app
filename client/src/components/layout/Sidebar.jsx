@@ -44,7 +44,7 @@ export const Sidebar = () => {
         <span
           onClick={() => handleCloseSidebar()}
           className="cursor-pointer absolute right-5 top-9 grid 
-          sxl:hidden z-20"
+          sxl:hidden z-20 xl:hidden"
         >
           <IconContext.Provider value={{ size: "1.0rem", color: "#f8f9fa" }}>
             <HiMiniChevronDoubleLeft />

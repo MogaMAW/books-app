@@ -19,22 +19,21 @@ export const Header = () => {
   return (
     <header
       className="transition-all w-full z-[110] py-3 pt-4 h-16
-      bg-gray-inherit border-b-[1px] border-gray-700 px-6
+      bg-gray-inherit border-b-[1px] border-gray-800 px-6
       text-gray-100"
     >
       <div
         className="flex justify-between 
          gap-4 sm:gap-6 md:flex-row md:items-center"
       >
-        <div>
-          <span className="text-xl font-semibold">Moga Book Store</span>
-        </div>
+        {!isLoggedIn && (
+          <div>
+            <span className="text-xl font-semibold">Moga Book Store</span>
+          </div>
+        )}
         {isLoggedIn && (
           <div className="flex items-center justify-center gap-4">
-            <div>
-              <span className="text-xl font-semibold">Moga Book Store</span>
-            </div>
-            <div className="flex items-center gap-4 w-12 sm:w-64">
+            <div className="flex items-center gap-4">
               <span
                 onClick={() => handleOpenSidebar()}
                 className="inline-block xl:hidden cursor-pointer"
@@ -45,6 +44,9 @@ export const Header = () => {
                   <IoIosMenu />
                 </IconContext.Provider>
               </span>
+            </div>
+            <div className="xl:hidden">
+              <span className="text-xl font-semibold">Moga Book Store</span>
             </div>
           </div>
         )}
