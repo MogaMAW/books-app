@@ -8,6 +8,7 @@ import { HiMiniChevronDoubleLeft } from "react-icons/hi2";
 import { IoIosHome } from "react-icons/io";
 import { extractFirstLetter } from "../../utils/extractFirstLetter";
 import { GoChevronDown } from "react-icons/go";
+import { LogOut } from "../UI/LogOut";
 
 export const Sidebar = () => {
   const isOpenSidebar = useSelector((state) => state.sidebar.isOpen);
@@ -44,7 +45,7 @@ export const Sidebar = () => {
         <span
           onClick={() => handleCloseSidebar()}
           className="cursor-pointer absolute right-5 top-9 grid 
-          sxl:hidden z-20 xl:hidden"
+           z-20 xl:hidden"
         >
           <IconContext.Provider value={{ size: "1.0rem", color: "#f8f9fa" }}>
             <HiMiniChevronDoubleLeft />
@@ -90,35 +91,37 @@ export const Sidebar = () => {
             </li>
           ))}
         </ul>
-        <div
-          className="flex items-center justify-start gap-3
-           rounded-md p-2 text-white  hover:bg-gray-800
-           focus:bg-gray-800 absolute left-4 bottom-4 w-[88%]
-           cursor-pointer"
-        >
-          <span
-            className="cursor-pointer grid place-items-center  bg-gray-300s p-1
-            w-10 h-10 rounded-[50%] text-gray-50 first-letter:uppercase text-xl
-            bg-gradient-to-r from-indigo-500 via-blue-700 to-cyan-900"
+        <LogOut>
+          <div
+            className="flex items-center justify-start gap-3
+             rounded-md p-2 text-white  hover:bg-gray-800
+             focus:bg-gray-800 absolute left-4 bottom-4 w-[88%]
+              cursor-pointer"
           >
-            {extractFirstLetter(user.username)}
-          </span>
-          <p className="flex-1 flex  justify-between">
             <span
-              className="cursor-pointer flex items-center gap-1
-              text-gray-50 text-sm"
+              className="cursor-pointer grid place-items-center  bg-gray-300s p-1
+               w-10 h-10 rounded-[50%] text-gray-50 first-letter:uppercase text-xl
+               bg-gradient-to-r from-indigo-500 via-blue-700 to-cyan-900"
             >
-              {user.username}
+              {extractFirstLetter(user.username)}
             </span>
-            <span className="cursor-pointer">
-              <IconContext.Provider
-                value={{ size: "1.4rem", color: "#e9ecef" }}
+            <p className="flex-1 flex  justify-between">
+              <span
+                className="cursor-pointer flex items-center gap-1
+                text-gray-50 text-sm"
               >
-                <GoChevronDown />
-              </IconContext.Provider>
-            </span>
-          </p>
-        </div>
+                {user.username}
+              </span>
+              <span className="cursor-pointer">
+                <IconContext.Provider
+                  value={{ size: "1.4rem", color: "#e9ecef" }}
+                >
+                  <GoChevronDown />
+                </IconContext.Provider>
+              </span>
+            </p>
+          </div>
+        </LogOut>
       </div>
     </aside>
   );

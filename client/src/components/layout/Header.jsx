@@ -19,12 +19,12 @@ export const Header = () => {
   return (
     <header
       className="transition-all w-full z-[110] py-3 pt-4 h-16
-      bg-gray-inherit border-b-[1px] border-gray-800 px-6
-      text-gray-100"
+       bg-gray-inherit border-b-[1px] border-gray-800 px-6
+       text-gray-100"
     >
       <div
-        className="flex justify-between 
-         gap-4 sm:gap-6 md:flex-row md:items-center"
+        className="flex justify-between gap-4 sm:gap-6 md:flex-row
+        md:items-center"
       >
         {!isLoggedIn && (
           <div>
@@ -50,7 +50,7 @@ export const Header = () => {
             </div>
           </div>
         )}
-        <div className="flex items-center gap-4 w-12 sm:w-64">
+        <div className="flex items-center gap-4">
           {!isLoggedIn && (
             <ul className="flex items-center justify-center gap-4">
               <li>
@@ -70,9 +70,6 @@ export const Header = () => {
               >
                 {extractFirstLetter(user.username)}
               </span>
-              <p className="flex items-center justify-center">
-                {user.username}
-              </p>
             </div>
           )}
         </div>
