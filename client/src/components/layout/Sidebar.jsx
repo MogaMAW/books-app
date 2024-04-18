@@ -8,6 +8,7 @@ import { HiMiniChevronDoubleLeft } from "react-icons/hi2";
 import { IoIosHome } from "react-icons/io";
 import { extractFirstLetter } from "../../utils/extractFirstLetter";
 import { GoChevronDown } from "react-icons/go";
+import { FaCartArrowDown } from "react-icons/fa";
 import { LogOut } from "../UI/LogOut";
 
 export const Sidebar = () => {
@@ -31,6 +32,17 @@ export const Sidebar = () => {
         </span>
       ),
       path: "",
+    },
+    {
+      name: "Orders",
+      icon: (
+        <span className="inline-block cursor-pointer">
+          <IconContext.Provider value={{ size: "1.6rem", color: "#f8f9fa" }}>
+            <FaCartArrowDown />
+          </IconContext.Provider>
+        </span>
+      ),
+      path: "order",
     },
   ];
 

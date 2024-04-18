@@ -65,7 +65,7 @@ export const BooksList = () => {
     <Fragment>
       <div
         className="py-14 w-full flex flex-col items-center justify-center
-         gap-16"
+         gap-16 text-gray-200"
       >
         <div className="w-full">
           <SearchBooks onSuccess={onSearchSuccessFullHandler} />

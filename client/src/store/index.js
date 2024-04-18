@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import { authSlice } from "./reducers/auth";
 import { sidebarSlice } from "./reducers/sidebar";
 import { notificationSlice } from "./reducers/notification";
+import { orderSlice } from "./reducers/order";
 
 export const store = configureStore({
   reducer: {
     sidebar: sidebarSlice.reducer,
     auth: authSlice.reducer,
     notification: notificationSlice.reducer,
+    order: orderSlice.reducer,
   },
 });
 
@@ -22,3 +24,4 @@ export { url };
 export const sidebarActions = sidebarSlice.actions;
 export const authActions = authSlice.actions;
 export const notificationActions = notificationSlice.actions;
+export const orderActions = orderSlice.actions;

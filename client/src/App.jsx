@@ -9,6 +9,7 @@ import { SignUp } from "./pages/SignUp";
 import { Notification } from "./components/UI/Notification";
 import { authenticate } from "./store/actions/auth";
 import { Header } from "./components/layout/Header";
+import { OrdersPages } from "./pages/OrdersPages";
 
 export const App = () => {
   const auth = useSelector((state) => state.auth);
@@ -102,6 +103,14 @@ export const App = () => {
                   element={
                     <AppLayout>
                       <Home />
+                    </AppLayout>
+                  }
+                />
+                <Route
+                  path="/order"
+                  element={
+                    <AppLayout>
+                      <OrdersPages />
                     </AppLayout>
                   }
                 />
