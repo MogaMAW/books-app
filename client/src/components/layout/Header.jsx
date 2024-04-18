@@ -5,10 +5,13 @@ import { IconContext } from "react-icons";
 import { IoIosMenu } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { extractFirstLetter } from "../../utils/extractFirstLetter";
+import { FaCartArrowDown } from "react-icons/fa";
 
 export const Header = () => {
   const user = useSelector((state) => state.auth.user);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const orders = useSelector((state) => state.order.orders);
+  const showCartNumber = !!orders[0];
 
   const dispatch = useDispatch();
 
@@ -63,8 +66,26 @@ export const Header = () => {
           )}
           {isLoggedIn && (
             <div className="flex items-center justify-center gap-4">
+              <NavLink to="/order" className="relative">
+                <span className="inline-block cursor-pointer">
+                  <IconContext.Provider
+                    value={{ size: "1.2rem", color: "#f8f9fa" }}
+                  >
+                    <FaCartArrowDown />
+                  </IconContext.Provider>
+                </span>
+                {showCartNumber && (
+                  <span
+                    className="text-gray-300 bg-primaryDark 
+                    rounded-[50%] absolute -top-4 -right-1 text-sm 
+                    font-semibold px-2"
+                  >
+                    {orders.length}
+                  </span>
+                )}
+              </NavLink>
               <span
-                className="cursor-pointer grid place-items-center  bg-gray-300s p-1
+                className="cursor-pointer grid place-items-center bg-gray-300s p-1
                  w-8 h-8 rounded-[50%] text-gray-50 first-letter:uppercase text-xl
                  bg-gradient-to-r from-indigo-500 via-blue-700 to-cyan-900"
               >

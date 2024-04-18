@@ -1,6 +1,6 @@
 import { url } from "../store";
 
-export const getBooksByUser = async () => {
+export const getAllBooks = async () => {
   const response = await fetch(`${url}/books/get-all`, {
     method: "GET",
     headers: {

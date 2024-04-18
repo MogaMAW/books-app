@@ -5,7 +5,7 @@ import {
   showCardNotification,
   hideCardNotification,
 } from "../store/actions/notification";
-import { getBooksByUser as getAllBooks } from "../API/books";
+import { getAllBooks } from "../API/books";
 import { BookCard } from "../components/UI/BookCard";
 import { SearchBooks } from "../components/UI/SearchBooks";
 
@@ -78,6 +78,7 @@ export const BooksList = () => {
           {books?.map((book, index) => (
             <div className="" key={index}>
               <BookCard
+                id={book.id}
                 title={book.title}
                 isbn={book.isbn}
                 authorName={book.author.authorName}

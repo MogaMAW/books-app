@@ -43,7 +43,7 @@ export const BookCard = (props) => {
           </p>
         </div>
         <div>
-          <OrderBook />
+          <OrderBook bookId={props.id} />
         </div>
       </div>
     </Fragment>
