@@ -1,6 +1,7 @@
 package com.example.BooksBackend.books;
 
 import com.example.BooksBackend.authors.Author;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +35,7 @@ public class Book {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime updatedAt;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", insertable = false, updatable = false)
     private Author author; // Define the many-to-one relationship with Author
