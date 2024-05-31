@@ -33,7 +33,7 @@ Need to reference the Swagger Springfox documentation? It's available at [https:
     }
     ```
 
-### Cancel Order
+### Cancel Order 
 
 - **URL**: `/api/v1/orders/cancel/{orderId}`
 - **Method**: PUT
