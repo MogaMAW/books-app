@@ -394,7 +394,7 @@ Need to reference the Swagger Springfox documentation? It's available at [https:
     }
     ```
 
-### Sign In
+### Sign In:
 
 - **URL**: `/api/v1/auth/signin`
 - **Method**: POST
