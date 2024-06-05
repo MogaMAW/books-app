@@ -12,7 +12,7 @@ RUN mvn dependency:go-offline
 COPY server/src ./src
 
 # Build the application
-RUN mvn package
+RUN mvn package 
 
 FROM openjdk:17-jdk-slim
 
