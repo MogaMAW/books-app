@@ -8,7 +8,7 @@ COPY server/pom.xml .
 # Download dependencies
 RUN mvn dependency:go-offline
 
-# Copy the application source code
+# Copy the application source code;
 COPY server/src ./src
 
 # Build the application
