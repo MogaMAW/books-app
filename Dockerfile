@@ -5,7 +5,7 @@ WORKDIR /app/server
  
 COPY server/pom.xml .
 
-# Download dependencies
+# Download-dependencies
 RUN mvn dependency:go-offline
 
 # Copy the application source code;
